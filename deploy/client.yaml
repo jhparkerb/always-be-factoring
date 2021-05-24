@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: client-deployment
+  name: client-deployment
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: client-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: client-deployment
+    spec:
+      containers:
+      - command:
+        - /pkg/cado/bin/cado-nfs-client.py
+        - --bindir=/pkg/cado/lib/cado-nfs-3.0.0
+        - --server=http://cado:37771
+        image: gcr.io/always-be-factoring/client
+        name: client
+        resources: {}
+status: {}

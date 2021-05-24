@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: server-deployment
+  name: server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: server-deployment
+    spec:
+      containers:
+      - command:
+        - /pkg/cado/bin/cado-nfs.py
+        - --server
+        - --workdir=.
+        - server.port=37771
+        - server.ssl=no
+        - server.whitelist=0.0.0.0/0
+        - "9757401896867360802987817507130991701110404289429813755973756572422531994792058319720292478926772277"
+        - name=c100
+        image: gcr.io/always-be-factoring/server
+        name: server
+        resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cado
+spec:
+  selector:
+    app: server-deployment
+  ports:
+    - protocol: TCP
+      port: 37771
