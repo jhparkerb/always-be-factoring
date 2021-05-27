@@ -21,15 +21,28 @@ spec:
       - command:
         - /pkg/cado/bin/cado-nfs.py
         - --server
-        - --workdir=.
+        - --workdir=/cado/77377_148
         - server.port=37771
         - server.ssl=no
         - server.whitelist=0.0.0.0/0
-        - "9757401896867360802987817507130991701110404289429813755973756572422531994792058319720292478926772277"
-        - name=c100
+        - tasks.linalg.run=false
+        - "68489538134963045012753418048864718221919673024126241515190356623562112876000656094550871288326742018515941728144033256717773215207494221103043993"
+        - name=77377_148
         image: gcr.io/always-be-factoring/server
         name: server
-        resources: {}
+        resources:
+          limits:
+            cpu: "1"
+          requests:
+            cpu: "0.1"
+        volumeMounts:
+        - mountPath: /cado
+          name: cado-volume
+      volumes:
+      - name: cado-volume
+        gcePersistentDisk:
+          pdName: cado-disk
+          fsType: ext4
 ---
 apiVersion: v1
 kind: Service

@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: client-deployment
-  name: client-deployment
+    app: client-hi
+  name: client-hi
 spec:
-  replicas: 6
+  replicas: 64
   selector:
     matchLabels:
-      app: client-deployment
+      app: client-hi
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: client-deployment
+        app: client-hi
     spec:
       containers:
       - command:
@@ -24,5 +24,37 @@ spec:
         - --server=http://cado:37771
         image: gcr.io/always-be-factoring/client
         name: client
-        resources: {}
+        resources:
+          limits:
+            cpu: "1"
+          requests:
+            cpu: "0.8"
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: client-lo
+  name: client-lo
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: client-lo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: client-lo
+    spec:
+      containers:
+      - command:
+        - /pkg/cado/bin/cado-nfs-client.py
+        - --bindir=/pkg/cado/lib/cado-nfs-3.0.0
+        - --server=http://cado:37771
+        image: gcr.io/always-be-factoring/client
+        name: client
 status: {}
