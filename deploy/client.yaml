@@ -22,7 +22,7 @@ spec:
         - /pkg/cado/bin/cado-nfs-client.py
         - --bindir=/pkg/cado/lib/cado-nfs-3.0.0
         - --server=http://cado:37771
-        image: gcr.io/always-be-factoring/client
+        image: gcr.io/always-be-factoring/cado
         name: client
         resources:
           limits:

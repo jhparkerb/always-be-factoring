@@ -13,8 +13,6 @@ Contents of each directory are:
 
 * `build/`: a build container based on Debian;
 * `gmp/`, `cado/`: build 3rd-party packages using the build environment;
-* `client/`, `server/`: add wrapper scripts to the `cado` container for k8s
-  use;
 * `build.sh`: a basic build script that build containers in the correct order.
 * `deploy/`: k8s YAML files defining deployments and other k8s concepts;
 
@@ -26,14 +24,10 @@ Contents of each directory are:
   * target different architectures;
 * `gmp`:
 * `cado`:
-	* subclass / tweak CADO-NFS server and client to make them more suitable for
-	  k8s;
-* `client`:
-  * use correct number of threads instead of default `-t 2`;
+	* subclass / tweak CADO-NFS server and client scripts to make them more
+	  suitable for k8s;
   * make client pods self-terminate on HTTP 410;
-* `server`:
-  * modify to use a whole machine for makefb;
-  * deployment for running matrix step;
+  * deployment for running linear algebra;
   * turn off color in logs;
   * accept lost pods (lower task timeout? disable node autoscaling?);
   * create persistent disk as needed;

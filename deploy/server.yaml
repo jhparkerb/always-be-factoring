@@ -29,7 +29,7 @@ spec:
         - server.whitelist=0.0.0.0/0
         - "89425769958264554895944823439636244050638251300634049426350169512919910660833742278213708138883123317807680853577027067221025016904543949538314058795012731549799"
         - name=37773_257
-        image: gcr.io/always-be-factoring/server
+        image: gcr.io/always-be-factoring/cado
         name: server
         resources:
           limits:
