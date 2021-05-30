@@ -42,5 +42,4 @@ Contents of each directory are:
   * make a system of tags to use to manage deployments;
 * `deploy`:
   * script creation of a cluster to run in;
-  * use more of the cluster's resources;
   * accept N, cluster size and CPUs/node as parameters;

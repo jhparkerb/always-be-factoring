@@ -21,20 +21,22 @@ spec:
       - command:
         - /pkg/cado/bin/cado-nfs.py
         - --server
-        - --workdir=/cado/77377_148
+        - --workdir=/cado/37773_257
+        - --server-threads=8
+        - --client-threads=2
         - server.port=37771
         - server.ssl=no
         - server.whitelist=0.0.0.0/0
-        - tasks.linalg.run=false
-        - "68489538134963045012753418048864718221919673024126241515190356623562112876000656094550871288326742018515941728144033256717773215207494221103043993"
-        - name=77377_148
+        - "89425769958264554895944823439636244050638251300634049426350169512919910660833742278213708138883123317807680853577027067221025016904543949538314058795012731549799"
+        - name=37773_257
         image: gcr.io/always-be-factoring/server
         name: server
         resources:
           limits:
-            cpu: "1"
+            # let the server use the whole machine for linalg etc.
+            cpu: 8000m
           requests:
-            cpu: "0.1"
+            cpu: 20m
         volumeMounts:
         - mountPath: /cado
           name: cado-volume
