@@ -22,7 +22,7 @@ ENV GMP_ROOT ${PKG_ROOT}/gmp
 
 ENV CADO_ROOT ${PKG_ROOT}/cado
 
-ENV CADO_REV 44349958caa4f93b7708a5a5a8bf33ebe49c3a83
+ENV CADO_REV a515a8367a3df27792214b1c33b33a308069fb62
 
 RUN git clone https://gitlab.inria.fr/cado-nfs/cado-nfs.git && \
 	cd cado-nfs && \
