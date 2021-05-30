@@ -37,7 +37,7 @@ RUN FLAGS_SIZE="-DSIZEOF_P_R_VALUES=8 -DSIZEOF_INDEX=8" \
 	PREFIX="${CADO_ROOT}" \
 		make -s -j$(nproc) install
 
-FROM debian:buster as cado
+FROM debian:buster-slim as cado
 
 COPY --from=gmp /pkg/gmp /pkg/gmp
 COPY --from=cado_build /pkg/cado /pkg/cado
